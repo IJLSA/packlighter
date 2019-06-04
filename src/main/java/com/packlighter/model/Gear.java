@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class PackCategory {
-	
-	private List<PackItem> items;
+public class Gear {
+
+	private List<PackItem> previouslyAddedItems;
 }
