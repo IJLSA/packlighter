@@ -1,39 +1,29 @@
 package com.packlighter.model;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.Data;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-@RequiredArgsConstructor
-@Getter
-@Setter
-//@ToString
+@Data
 @Entity
-//@Data
+@RequiredArgsConstructor
 public class PackCategory {
 
-    //    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String categoryId;
     @OneToMany(mappedBy = "packCategory")
     private List<PackItem> packItems;
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "list_id")
     private PackList packList;
 
@@ -41,8 +31,8 @@ public class PackCategory {
     public String toString() {
         return "PackCategory{" +
                 "categoryId='" + categoryId + '\'' +
-                ", packItems=" + packItems +
-                ", packList=" + packList +
+                ", packItems=" + packItems.size() +
+                ", packList name=" + packList.getListName() +
                 '}';
     }
 }
