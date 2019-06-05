@@ -35,14 +35,22 @@ public class PackService {
         packListRepository.save(packList);
     }
 
+    public PackList findPackListByName(String name) {
+        return packListRepository.findByListName(name).get();
+    }
+
+    public void addCategory(PackCategory packCategory) {
+        packCategoryRepository.save(packCategory);
+    }
+
     // Will remove, just an attempt to persist all models
     public void test() {
         PackList packList = new PackList();
         PackCategory packCategory = new PackCategory();
         PackItem packItem = new PackItem();
-        packItem.setDescription("Description");
+        packItem.setDescription("New Description");
         packItem.setMeasurement(Measurement.GRAM);
-        packItem.setName("Name");
+        packItem.setName("New Name");
         packItem.setPurpose(ItemPurpose.CONSUMABLE);
         packItem.setWeight(55.9);
         packItem.setQuantity(4);

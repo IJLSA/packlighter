@@ -13,5 +13,5 @@ import lombok.ToString;
 @ToString
 public class Gear {
 
-	private List<PackItem> previouslyAddedItems;
+    private List<PackItem> previouslyAddedItems;
 }
